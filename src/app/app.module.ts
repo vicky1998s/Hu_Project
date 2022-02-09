@@ -18,7 +18,8 @@ const routes=[
   {path:'Home',component:DashboardComponent},
   {path:'Wishlist',component:WishlistComponent},
   {path:'Coursedetail/:courseid',component:CourseDetailComponent},
-  {path:'Cart',component:CartLayoutComponent}
+  {path:'Cart',component:CartLayoutComponent},
+  {path:'',component:DashboardComponent}
 ]
 
 @NgModule({
