@@ -1,0 +1,19 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+
+
+<nav class="navbar navbar-light">
+  <a class="navbar-brand" routerLink="/Home">
+    <img class="navbar-image" src="./assets/HashedIn_Logo.png" alt="">
+  </a>
+  <form class="form-inline">
+    <span class="spantext mr-sm-5 active" routerLink="/Home">Courses </span>
+    <span class="spantext mr-sm-5" routerLink="/Wishlist">My Wishlist </span>
+    <a href="#" class="notification" routerLink="/Cart">
+      <span><i class="far lg fa-shopping-cart"></i></span>
+      <span class="badge">{{cartqty}}</span>
+    </a>
+    <span class="spantext"><i class="far fa-user-circle my-2 my-sm-2"></i></span>
+  </form>
+</nav>
+

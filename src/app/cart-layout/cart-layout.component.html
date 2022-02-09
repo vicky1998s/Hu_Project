@@ -1,0 +1,113 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 p-2 " style="height:50px">
+     {{coursecount}} Courses in Cart
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row cartgrid p-2 border" >
+        <div class="cardoutline">
+
+          <div class="mt-2 card" style="height:60px;text-align: center;width: 98%;"
+           *ngFor="let d of cartitems">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <img class="card-image" src="./assets/Np.jpg" alt="">
+                </div>
+                <div class="col-md-4" style="text-align:left;">
+                      {{ d.title }}
+                </div>
+                <div class="col-md-1">
+
+                </div>
+                <div class="col-md-2">
+                  <span >
+                    <a href="#">Move to Wishlist</a>
+                  </span>
+                </div>
+                <div class="col-md-2 md2-width" *ngIf="d.discounted_price===null">
+                   Rs {{d.actual_price}}/-
+
+                </div>
+                <div class="col-md-2 md2-width" *ngIf="d.discounted_price!==null">
+                   Rs {{d.discounted_price}}/-
+                </div>
+                <div class="col-md-1" (click)="deletefromcart(d.id)">
+                  <i class="fas fa-trash-alt"></i>
+                </div>
+              </div>
+          </div>
+          </div>
+          </div>
+      </div>
+      <hr>
+      <div class="recommendedcourse p-1 border">
+       <span class="textcourse">Recommended courses</span>
+        <div class="card cardrec m-2" style="height:60px;text-align: center;width: 95%;"
+         *ngFor="let d of recommendeditems">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <img class="card-image" src="./assets/Np.jpg" alt="">
+              </div>
+              <div class="col-md-4" style="text-align:left;">
+                    {{ d.title }}
+              </div>
+              <div class="col-md-1">
+
+              </div>
+              <div class="col-md-2">
+
+              </div>
+              <div class="col-md-2 md2-width" *ngIf="d.discounted_price===null">
+                 Rs {{d.actual_price}}/-
+
+              </div>
+              <div class="col-md-2 md2-width" *ngIf="d.discounted_price!==null">
+                 Rs {{d.discounted_price}}/-
+              </div>
+              <div class="col-md-1" style="color:#F7711A;">
+                <i class="fas fa-bookmark"></i>
+              </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row">
+        <div class="card m-2">
+          <div class="card-header ">
+            TOTAL AMOUNT
+          </div>
+          <div class="card-body" style="height: 250px;">
+
+            <p class="card-text bottom-2"
+            *ngIf="cartitems.length<=0"
+            style="color: gray;height: 100px;font-style: italic;">
+            Your Cart is empty right now.please add courses in the cart from the list
+            </p>
+            <p class="mt-1"
+            *ngIf="cartitems.length>0"
+            style="color: black;font-size:25px;">
+            Rs {{totalprice}}/-
+            </p>
+            <p class="mt-1" style="color: #90C17F;" *ngIf="cartitems.length>0">
+              You Saved Rs {{savedamount}}/- in this order
+            </p>
+            <div class="card-footer">
+               <button *ngIf="cartitems.length<=0" class="btn btn-warning disabled">
+                 CHECKOUT</button>
+                 <button *ngIf="cartitems.length>0" class="btn btn-warning">
+                  CHECKOUT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+

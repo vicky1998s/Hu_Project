@@ -1,0 +1,65 @@
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/Home">My Courses</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{coursedetails.title}}</li>
+  </ol>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 bg-black" style="height: 220px;">
+      <div class="row" style="color: white;">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
+          <div class="row-fluid p-3">
+            <div class="titleupper m-2"> {{coursedetails.title}}</div>
+            <div class="titlelower m-2 p-0">{{coursedetails.title}}</div>
+            <div class="courseauthor p-2">{{coursedetails.author}}</div>
+            <div class="col-9 p-4">
+              <span class="badge badge-pill btn-warning mypill m-1"
+              *ngFor="let badge of coursedetails.tags"
+              >{{badge}} </span>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7 bg-light" style="height: 275px">
+      <br>
+     Course Details:
+     <br><br>
+     {{coursedetails.details}}
+    </div>
+    <div class="col-md-5" style="height: 500px;bottom: 200px;">
+      <div class="col-md-12">
+        <div class="row-fluid videothumbnail">
+          <div> <img src="./assets/video.png" class="thumbnail" alt=""></div>
+        </div>
+      </div>
+       <div class="col-md-12 ">
+        <div class="row-fluid cartbox p-3">
+          <div class="discount m-2 p-0" *ngIf="coursedetails.discounted_price!==null">
+            Rs {{coursedetails.discounted_price}}/-
+          </div>
+          <div class="discount m-2 p-0" *ngIf="coursedetails.discounted_price===null">
+            Rs {{coursedetails.actual_price}}/-
+          </div>
+          <div class="actual m-2 p-0">
+             Rs {{coursedetails.actual_price}}
+          </div>
+          <div class="clock m-0 p-2"><i class="far fa-stopwatch"></i> 8 hours left at this Price</div>
+          <div>
+            <button class="btn btn-info m-3 p-2" (click)="addToCart(coursedetails)">
+              ADD TO CART&nbsp; <i class="far lg fa-shopping-cart"></i></button>&nbsp;&nbsp;
+            <button class="btn btn-info"> ADD TO WISHLIST&nbsp;
+              <i class="far fa-bookmark"></i>
+            </button>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>

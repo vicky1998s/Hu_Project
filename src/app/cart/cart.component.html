@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="card m-2">
+    <div class="card-header ">
+      YOUR CART DETAILS ({{cartqty}})
+    </div>
+    <div class="card-body" >
+      <table class="table table-hover">
+        <tr *ngFor="let item of cartitems">
+          <td >
+            <img class="cartimg" src="./assets/Np.jpg" alt="">
+          </td>
+          <td style="font-size:12.5px">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="row-fluid">
+                  <div>{{item.title}}</div>
+                  <div *ngIf="item.discounted_price===null"
+                   style="text-align: end;">Rs {{item.actual_price}}/-</div>
+                   <div *ngIf="item.discounted_price!==null"
+                   style="text-align: end;">Rs {{item.discounted_price}}/-</div>
+               </div>
+            </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <p class="card-text bottom-2"
+      *ngIf="cartitems.length<=0"
+      style="color: gray;height: 300px;font-style: italic;">Your Cart is empty right now.please add courses in the cart from the list</p>
+      <div class="card-footer">
+Total Cart Value
+<h6>
+  Rs {{totalprice}}/-
+</h6>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-12" >
+    <div class="row">
+      <div class="col-md-12 " style="height: 50px;">
+        <div class="row">
+          <div class="col p-2 m-2">
+            All Courses
+          </div>
+          <div class="col-6  p-2 m-6">
+            <div class="btn-group">
+              <select class="form-control" #t (change)="sortcartasc(t.value)">
+                <option >Course Price <i class="fas fa-sort"></i></option>
+                <option value='asc'>Low to High</option>
+                <option value='desc'>High to Low</option>
+              </select>
+            </div>
+          </div>
+          <div class="col p-2">
+            <div class="row">
+              <div class="col-8">
+                <input type="text" class="form-control" placeholder="Search..."
+                (keyup)="filtercourses($event)" (keydown)="getData()"
+                >
+              </div>
+              <div class="col-2 p-0">
+                <button class="btn btn-warning"><i class="fas fa-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      <div class="col-md-9" >
+        <div class="row cartgrid p-2 border" >
+        <div class="cardoutline">
+        <div class="card m-2" *ngFor="let d of data | paginate: { itemsPerPage: 4, currentPage: p }">
+
+          <div class="card-body p-2" >
+            <div class="row">
+              <div class="col-md-2" [routerLink]="['/Coursedetail',d.id]">
+                <img class="card-image" src="./assets/Np.jpg" alt="">
+              </div>
+              <div class="col-md-4 p-0" [routerLink]="['/Coursedetail',d.id]">
+                <div class="row">
+                  <div class="col-12">
+                    {{ d.title }}
+                  </div>
+                  <div class="col-9">
+                      <span class="badge badge-pill badge-warning"
+                      style="background-color: #FA4607;color: white;margin-right: 2px;border-radius: 5px;"
+                      *ngFor="let badge of d.tags"
+                      >{{badge}}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-2 p-3 m-2 md2-width"[routerLink]="['/Coursedetail',d.id]" style="color: gray;" >
+                {{ d.author }}
+              </div>
+              <div class="col-md-2 p-3 md2-width"[routerLink]="['/Coursedetail',d.id]" *ngIf="d.discounted_price===null">
+                <i class="far fa-star"></i>&nbsp; Rs {{d.actual_price}}/-
+
+              </div>
+              <div class="col-md-2 p-3 md2-width"[routerLink]="['/Coursedetail',d.id]" *ngIf="d.discounted_price!==null">
+                <i class="far fa-star"></i>&nbsp; Rs {{d.discounted_price}}/-
+
+              </div>
+              <div class="col-md-1 p-3"[routerLink]="['/Coursedetail',d.id]">
+                <span style="text-decoration: line-through;">
+                  {{d.actual_price}}</span>
+              </div>
+              <div class="col-md-1 p-3">
+                <button class="button" style="vertical-align:middle;"
+                (click)="addToCart(d)"
+                ><span>ADD TO CART</span></button>
+             </div>
+            </div>
+          </div>
+        </div>
+        <pagination-controls class="pagination" (pageChange)="p = $event" ></pagination-controls>
+      </div>
+        </div>
+      </div>
+
+      <div class="col-md-3" style="height: 440px;">
+        <app-cart></app-cart>
+      </div>
+    </div>
+  </div>
+</div>

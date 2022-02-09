@@ -1,0 +1,77 @@
+.videothumbnail{
+  box-shadow: rgba(254, 251, 251, 0.981) 0px 10px 36px 0px,
+   rgb(250, 249, 249) 0px 0px 0px 1px;
+  height:250px;
+  background-color: black;
+  position: relative;
+
+}
+
+.thumbnail{
+  height:80px;
+  width: 110px;
+  position: absolute;
+  top: 35%;
+  left: 35%;
+}
+
+.pricecart{
+  height: 30%;
+  width: 100%;
+  background-color: brown;
+}
+
+.titlelower{
+  color:grey;
+  font-style: italic;
+  font-size: 13px;
+}
+.titleupper{
+  color:white;
+  font-weight: bold;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+.courseauthor{
+  color:#F47725 ;
+  text-transform: capitalize;
+}
+.mypill{
+  background-color: white;
+  text-transform: capitalize;
+  color: gray;
+  margin-right: 2px;
+  border-radius: 5px;
+}
+
+
+.discount{
+ font-size:22px;
+ font-weight: bold;
+}
+.actual{
+  text-decoration: line-through;
+  font-style: italic;
+  color: gray;
+}
+.clock{
+  color:#F45D25 ;
+}
+
+.cartbox{
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.btn-info{
+  background-color: #F45D25;
+  border-color: #F45D25;
+  font-weight: 100;
+  font-size: 14px;
+
+}
+
+.btn-info:hover{
+  background-color: #F45D25;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
