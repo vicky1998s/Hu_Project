@@ -4,6 +4,7 @@
       YOUR CART DETAILS ({{cartqty}})
     </div>
     <div class="card-body" >
+      <div style="height: 300px;overflow: scroll;overflow-x:hidden;" *ngIf="cartitems.length>0" >
       <table class="table table-hover">
         <tr *ngFor="let item of cartitems">
           <td >
@@ -17,14 +18,14 @@
                   <div *ngIf="item.discounted_price===null"
                    style="text-align: end;">Rs {{item.actual_price}}/-</div>
                    <div *ngIf="item.discounted_price!==null"
-                   style="text-align: end;">Rs {{item.discounted_price}}/-</div>
+                   style="text-align: end;color: green;">Rs {{item.discounted_price}}/-</div>
                </div>
             </div>
             </div>
           </td>
         </tr>
       </table>
-
+    </div>
       <p class="card-text bottom-2"
       *ngIf="cartitems.length<=0"
       style="color: gray;height: 300px;font-style: italic;">Your Cart is empty right now.please add courses in the cart from the list</p>
@@ -32,7 +33,10 @@
 Total Cart Value
 <h6>
   Rs {{totalprice}}/-
+  <button *ngIf="cartitems.length>0" class="button" style="vertical-align:middle;"
+        routerLink="/Cart"        ><span>GO TO CART</span></button>
 </h6>
+
       </div>
     </div>
   </div>

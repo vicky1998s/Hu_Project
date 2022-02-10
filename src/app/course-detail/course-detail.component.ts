@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
 import { ActivatedRoute } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
+declare var window:any;
 
 @Component({
   selector: 'app-course-detail',
@@ -10,24 +9,47 @@ import { Content } from '@angular/compiler/src/render3/r3_ast';
   styleUrls: ['./course-detail.component.css']
 })
 export class CourseDetailComponent implements OnInit {
-
+  showcart:any;
+  alreadyexists:any;
   coursedetails:any=[];
   courseservice:CourseService;
   closeResult: string="";
+  wishlistcart:any;
+  wishlistcartexists:any;
 
   id:string="";
-  constructor(courseservice:CourseService,private route:ActivatedRoute,
-    private modalService:NgbModal) {
+  constructor(courseservice:CourseService,private route:ActivatedRoute) {
     this.courseservice=courseservice;
+  }
+  openModal(modal:any){
+    modal.show();
+  }
+  CloseModal(modal:any){
+    modal.hide();
   }
 
   ngOnInit(): void {
+    this.showcart= new window.bootstrap.Modal(
+      document.getElementById("cartmodal"));
+    this.alreadyexists= new window.bootstrap.Modal(
+        document.getElementById("alreadypresent"));
+   this.wishlistcart= new window.bootstrap.Modal(
+      document.getElementById("wishlistcart"));
+      this.wishlistcartexists= new window.bootstrap.Modal(
+        document.getElementById("wishlistcartexists"));
     this.id=String(this.route.snapshot.paramMap.get('courseid'));
     this.getcoursedetails(this.id) ;
   }
 
   addToCart(product:any){
-    this.courseservice.addToCart(product);
+    let response:number=(this.courseservice.addToCart(product));
+
+    if(response>0){
+     this.showcart.show();
+    }
+    else if(response===0){
+      this.alreadyexists.show();
+    }
 
   }
   getcoursedetails(id:string) {
@@ -38,23 +60,18 @@ export class CourseDetailComponent implements OnInit {
     );
 
   }
+  addwishlist(product:any){
+    let response:number=(this.courseservice.addtowishlist(product));
 
-  open(content:string) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-  }
+     if(response>0){
+      this.courseservice.removefromcart(product.id);
+      this.wishlistcart.show();
+     }
+     else{
+       this.wishlistcartexists.show();
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+     }
+
   }
 
 }

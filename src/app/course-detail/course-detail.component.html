@@ -54,11 +54,92 @@
           <div>
             <button class="btn btn-info m-3 p-2" (click)="addToCart(coursedetails)">
               ADD TO CART&nbsp; <i class="far lg fa-shopping-cart"></i></button>&nbsp;&nbsp;
-            <button class="btn btn-info"> ADD TO WISHLIST&nbsp;
+            <button class="btn btn-info"
+            (click)="addwishlist(coursedetails)"> ADD TO WISHLIST&nbsp;
               <i class="far fa-bookmark"></i>
             </button>
           </div>
         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="cartmodal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="CloseModal(showcart)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="far fa-check-circle" style="color: green;"></i>
+             Course Has Been Added To The Cart!!!</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="alreadypresent" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="CloseModal(alreadyexists)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="far fa-exclamation-circle" style="color: red;"></i>
+             Item Already Exists In Your Cart!!!</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="wishlistcart" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="CloseModal(wishlistcart)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="fas fa-badge-check" style="color: green;"></i>
+            Product Added to the Wishlist!!!</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="wishlistcartexists" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="CloseModal(wishlistcartexists)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="far fa-exclamation-circle" style="color: red;"></i>
+            Product Already Exists in Wishlist!!!</p>
+        </div>
+        <div class="modal-footer">
+
         </div>
       </div>
     </div>

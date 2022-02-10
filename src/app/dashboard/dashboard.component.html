@@ -34,11 +34,12 @@
     <div class="row">
 
       <div class="col-md-9" >
-        <div class="row cartgrid p-2 border" >
-        <div class="cardoutline">
-        <div class="card m-2" *ngFor="let d of data | paginate: { itemsPerPage: 4, currentPage: p }">
+        <div class="row cartgrid p-2 border" style="height:500px;" *ngIf="data.length>0" >
+        <div class="card m-2"
+        *ngFor="let d of data | paginate: { itemsPerPage: 4, currentPage: p }"
+        >
 
-          <div class="card-body p-2" >
+          <div class="card-body p-1" >
             <div class="row">
               <div class="col-md-2" [routerLink]="['/Coursedetail',d.id]">
                 <img class="card-image" src="./assets/Np.jpg" alt="">
@@ -82,11 +83,61 @@
         </div>
         <pagination-controls class="pagination" (pageChange)="p = $event" ></pagination-controls>
       </div>
+
+      <div class="col-md-9 border p-4" style="height:200px;width: 800px;" *ngIf="data.length<=0">
+        <div class="d-flex justify-content-center">
+
+            No Items to Display !!!!
+
         </div>
+      </div>
       </div>
 
       <div class="col-md-3" style="height: 440px;">
         <app-cart></app-cart>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal" id="cartmodal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HU E-Learning HUB</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="closeModal(cartModal)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p><i class="far fa-check-circle" style="color: green;"></i>
+           Course Has Been Added To The Cart!!!</p>
+      </div>
+      <div class="modal-footer">
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="alreadypresent" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">HU E-Learning HUB</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="closeModal(cartModalExists)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p><i class="far fa-exclamation-circle" style="color: red;"></i>
+           Item Already Exists In Your Cart!!!</p>
+      </div>
+      <div class="modal-footer">
+
       </div>
     </div>
   </div>

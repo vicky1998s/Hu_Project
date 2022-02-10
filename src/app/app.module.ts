@@ -13,13 +13,15 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CourseDetailComponent } from './course-detail/course-detail.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CartLayoutComponent } from './cart-layout/cart-layout.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes=[
   {path:'Home',component:DashboardComponent},
   {path:'Wishlist',component:WishlistComponent},
   {path:'Coursedetail/:courseid',component:CourseDetailComponent},
   {path:'Cart',component:CartLayoutComponent},
-  {path:'',component:DashboardComponent}
+  {path:'Profile',component:ProfileComponent},
+  {path:'**',component:DashboardComponent}
 ]
 
 @NgModule({
@@ -30,7 +32,8 @@ const routes=[
     CartComponent,
     WishlistComponent,
     CourseDetailComponent,
-    CartLayoutComponent
+    CartLayoutComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,RouterModule.forRoot(routes),HttpClientModule,NgxPaginationModule,

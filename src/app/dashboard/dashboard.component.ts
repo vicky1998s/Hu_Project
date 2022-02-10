@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../course.service';
-
+declare var window:any;
 
 @Component({
   selector: 'app-dashboard',
@@ -12,9 +12,24 @@ export class DashboardComponent implements OnInit {
   constructor(private course :CourseService) { }
 
   ngOnInit(): void {
+    this.cartModal= new window.bootstrap.Modal(
+      document.getElementById("cartmodal")
+    )
+    this.cartModalExists= new window.bootstrap.Modal(
+      document.getElementById("alreadypresent")
+    )
+
     this.getData();
   }
- asc:string="asc";
+
+  closeModal(modal:any){
+    modal.hide();
+  }
+
+
+  cartModal:any;
+  cartModalExists:any;
+  asc:string="asc";
   p:any;
   data:any=[];
   getData() {
@@ -25,7 +40,14 @@ export class DashboardComponent implements OnInit {
     );
   }
    addToCart(product:any){
-     this.course.addToCart(product);
+     let response:number=(this.course.addToCart(product));
+
+     if(response>0){
+      this.cartModal.show();
+     }
+     else if(response===0){
+       this.cartModalExists.show();
+     }
 
    }
    sortcartasc(order:string){

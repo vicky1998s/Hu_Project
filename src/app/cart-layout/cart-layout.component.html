@@ -24,8 +24,9 @@
 
                 </div>
                 <div class="col-md-2">
-                  <span >
-                    <a href="#">Move to Wishlist</a>
+                  <span (click)="addwishlist(d)">
+                    <a  style="color: blue;text-decoration: underline;"
+                    >Move to Wishlist</a>
                   </span>
                 </div>
                 <div class="col-md-2 md2-width" *ngIf="d.discounted_price===null">
@@ -69,10 +70,12 @@
               <div class="col-md-2 md2-width" *ngIf="d.discounted_price!==null">
                  Rs {{d.discounted_price}}/-
               </div>
-              <div class="col-md-1" style="color:#F7711A;">
+              <div class="col-md-1" style="color:#F7711A;cursor: pointer;"
+              (click)="movefromrecommended(d)">
                 <i class="fas fa-bookmark"></i>
+
               </div>
-            </div>
+            </div >
         </div>
         </div>
     </div>
@@ -95,13 +98,13 @@
             style="color: black;font-size:25px;">
             Rs {{totalprice}}/-
             </p>
-            <p class="mt-1" style="color: #90C17F;" *ngIf="cartitems.length>0">
+            <p class="mt-1" style="color: green;" *ngIf="cartitems.length>0">
               You Saved Rs {{savedamount}}/- in this order
             </p>
             <div class="card-footer">
                <button *ngIf="cartitems.length<=0" class="btn btn-warning disabled">
                  CHECKOUT</button>
-                 <button *ngIf="cartitems.length>0" class="btn btn-warning">
+                 <button *ngIf="cartitems.length>0" class="btn btn-warning" (click)="ClearCart(checkoutcart)">
                   CHECKOUT</button>
             </div>
           </div>
@@ -110,4 +113,83 @@
 
     </div>
   </div>
+  <div class="modal" id="removecart" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeModal(deletecart)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="far fa-exclamation-circle" style="color: red;"></i>
+             Item Removed From Your Cart Successfully!!!</p>
+        </div>
+        <div class="modal-footer">
 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="Checkoutcart" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeModal(checkoutcart)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="fas fa-badge-check" style="color: green;"></i>
+            Thank You For Shopping With Us!!!</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="wishlistcart" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeModal(wishlistcart)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="fas fa-badge-check" style="color: green;"></i>
+            Product Added to the Wishlist!!!</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal" id="wishlistcartexists" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">HU E-Learning HUB</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+          (click)="closeModal(wishlistcartexists)">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="text-align: center;">
+          <p><i class="far fa-exclamation-circle" style="color: red;"></i>
+            Product Already Exists in Wishlist!!!</p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
